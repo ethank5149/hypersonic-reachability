@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hypersonic Reachability</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #1f1c18;
+      --surface: #2a2621;
+      --paper: #f2ebe0;
+      --ink: #1a1713;
+      --muted: #9a9185;
+      --warm: #c4a574;
+      --rule: #3d3730;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--paper);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3.5rem 1.75rem 5rem;
+    }
+
+    header {
+      margin-bottom: 3rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .site-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.1rem, 4.5vw, 2.7rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 0.6rem;
+      color: var(--paper);
+    }
+
+    .byline {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .byline span {
+      color: var(--warm);
+    }
+
+    /* Documents */
+    .documents {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 640px) {
+      .documents {
+        grid-template-columns: 1fr;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+    }
+
+    .volume {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .cover {
+      position: relative;
+      background: var(--paper);
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow:
+        0 4px 6px rgba(0,0,0,0.25),
+        0 12px 28px rgba(0,0,0,0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .volume:hover .cover {
+      transform: translateY(-5px);
+      box-shadow:
+        0 8px 12px rgba(0,0,0,0.3),
+        0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .primary .cover {
+      aspect-ratio: 3 / 4.05;
+    }
+
+    .stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .stack .cover {
+      aspect-ratio: 3 / 4.05;
+    }
+
+    .cover canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .cover .status {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 0.85rem;
+      color: #666;
+      background: var(--paper);
+    }
+
+    .spine-edge {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 8px;
+      background: linear-gradient(to right, rgba(0,0,0,0.18), transparent);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .caption {
+      margin-top: 0.85rem;
+    }
+
+    .caption h2,
+    .caption h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: var(--paper);
+    }
+
+    .caption h2 { font-size: 1.4rem; }
+    .caption h3 { font-size: 1.15rem; }
+
+    .caption p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    footer a {
+      color: var(--warm);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1 class="site-title">Hypersonic Reachability</h1>
+      <p class="byline">Ethan Knox &nbsp;·&nbsp; <span>Independent researcher</span></p>
+    </header>
+
+    <div class="documents">
+      <!-- Primary -->
+      <a class="volume primary" href="proposal.pdf" target="_blank" rel="noopener">
+        <div class="cover" data-src="proposal.pdf">
+          <div class="spine-edge"></div>
+          <div class="status">Loading</div>
+        </div>
+        <div class="caption">
+          <h2>Proposal</h2>
+        </div>
+      </a>
+
+      <!-- Secondary stack -->
+      <div class="stack">
+        <a class="volume" href="summary.pdf" target="_blank" rel="noopener">
+          <div class="cover" data-src="summary.pdf">
+            <div class="spine-edge"></div>
+            <div class="status">Loading</div>
+          </div>
+          <div class="caption">
+            <h3>Summary</h3>
+          </div>
+        </a>
+
+        <a class="volume" href="precis.pdf" target="_blank" rel="noopener">
+          <div class="cover" data-src="precis.pdf">
+            <div class="spine-edge"></div>
+            <div class="status">Loading</div>
+          </div>
+          <div class="caption">
+            <h3>Précis</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      <span>Personal research</span>
+      <a href="https://github.com/ethank5149/hypersonic-reachability" target="_blank" rel="noopener">Repository</a>
+    </footer>
+  </div>
+
+  <script type="module">
+    import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs';
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
+
+    async function renderCover(el) {
+      const src = el.dataset.src;
+      const status = el.querySelector('.status');
+      try {
+        const pdf = await pdfjsLib.getDocument({ url: src }).promise;
+        const page = await pdf.getPage(1);
+        const viewport = page.getViewport({ scale: 1.7 });
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d', { alpha: false });
+        canvas.width = Math.floor(viewport.width);
+        canvas.height = Math.floor(viewport.height);
+        await page.render({ canvasContext: ctx, viewport }).promise;
+        status.remove();
+        el.appendChild(canvas);
+      } catch (err) {
+        console.error(src, err);
+        status.textContent = 'Preview unavailable';
+      }
+    }
+
+    document.querySelectorAll('.cover[data-src]').forEach(renderCover);
+  </script>
+</body>
+</html>
