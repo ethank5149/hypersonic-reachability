@@ -230,8 +230,24 @@
     pdfjsLib.GlobalWorkerOptions.workerSrc =
       'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
 
+    // The documents are replaced in place under the same names, and a browser
+    // may keep its copy of a PDF for hours. Ask the server which version is
+    // current, and address that version, so a stale copy is never the one opened.
+    async function current(src) {
+      try {
+        const head = await fetch(src, { method: 'HEAD', cache: 'no-store' });
+        const version = (head.headers.get('etag') || head.headers.get('last-modified') || '')
+          .replace(/[^A-Za-z0-9]/g, '');
+        return head.ok && version ? `${src}?v=${version}` : src;
+      } catch (err) {
+        return src;
+      }
+    }
+
     async function renderCover(el) {
-      const src = el.dataset.src;
+      const src = await current(el.dataset.src);
+      const link = el.closest('a');
+      if (link) link.href = src;
       const status = el.querySelector('.status');
       try {
         const pdf = await pdfjsLib.getDocument({ url: src }).promise;
