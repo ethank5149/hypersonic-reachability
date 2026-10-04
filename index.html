@@ -17,6 +17,7 @@
       --muted: #9a9185;
       --warm: #c4a574;
       --rule: #3d3730;
+      --text-main: #d4cfc7;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,7 +27,7 @@
       background: var(--bg);
       color: var(--paper);
       min-height: 100vh;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .page {
@@ -36,7 +37,7 @@
     }
 
     header {
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
       padding-bottom: 1.75rem;
       border-bottom: 1px solid var(--rule);
     }
@@ -60,7 +61,66 @@
       color: var(--warm);
     }
 
+    /* Executive Summary Section */
+    .executive-summary {
+      margin-bottom: 3.5rem;
+      color: var(--text-main);
+      font-size: 1.05rem;
+    }
+
+    .executive-summary h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.8rem;
+      color: var(--paper);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+    }
+
+    .executive-summary h3 {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 1.1rem;
+      color: var(--warm);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 1.8rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .executive-summary p {
+      margin-bottom: 1rem;
+    }
+
+    .executive-summary ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .executive-summary li {
+      margin-bottom: 0.5rem;
+    }
+
+    .executive-summary li strong {
+      color: var(--paper);
+      font-weight: 600;
+    }
+
+    .section-divider {
+      border-top: 1px solid var(--rule);
+      margin-bottom: 2.5rem;
+    }
+
     /* Documents */
+    .documents-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.8rem;
+      color: var(--paper);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+    }
+
     .documents {
       display: grid;
       grid-template-columns: 1.3fr 1fr;
@@ -191,6 +251,35 @@
       <p class="byline">Ethan Knox &nbsp;·&nbsp; <span>Independent researcher</span></p>
     </header>
 
+    <!-- Project Aether Overview -->
+    <section class="executive-summary">
+      <h2>Project Aether Overview</h2>
+      
+      <h3>The Problem</h3>
+      <p>When a spacecraft returns to Earth, it hits the atmosphere at thousands of miles per hour. Engineers and defense researchers alike need a 100% guaranteed safety map showing everywhere the vehicle could possibly land to prepare accordingly.</p>
+      <p>One might think a supercomputer could brute-force the exact flight path. But a spacecraft tumbling through the atmosphere is incredibly chaotic—constantly affected by shifting winds, extreme heat, and its own vibrations—so much so that even the best supercomputers run out of compute. In lieu of a mathematical guarantee, they are reduced to, at best, an "educated guess."</p>
+
+      <h3>Our Approach</h3>
+      <p>This research proposes a new way to solve this problem without relying on computer simulations. Instead of trying to track every detail in the spacecraft's path, we "zoom out" and use fundamental laws of physics to draw an absolute outer boundary that contains every possible place the vehicle can go.</p>
+      <p>To do this, we group the messy flight into three regimes:</p>
+      <ul>
+        <li><strong>The Skeleton:</strong> The smooth, easy-to-predict parts of the trip, like coasting in the vacuum of space or gliding evenly on top of the atmosphere.</li>
+        <li><strong>The Bubbles:</strong> The violent, split-second moments when the ship dips deep into the thick air, sheds a massive amount of speed, and bounces back up.</li>
+        <li><strong>The Residual:</strong> An analytic safety buffer that accounts for all the leftover dynamics and errors.</li>
+      </ul>
+
+      <h3>The Innovation</h3>
+      <p>The hardest parts of the flight to calculate are these bubbles. These dips happen so incredibly fast compared to the rest of the journey that the standard equations essentially fail to track the events entirely, losing the exact moments when the spacecraft violently slows down.</p>
+      <p>To address this, we effectively slow down the clock by dilating the timeline so those split-second atmospheric dips can be successfully isolated. We can then use this stretched "slow time" to track the energy during these events. That way, even if one of these dips takes almost zero time, we can still keep track of the energy lost by the vehicle during these maneuvers.</p>
+
+      <h3>The End Goal</h3>
+      <p>Because the spacecraft only has a finite amount of energy, it can only hit so many of these atmospheric "bumps" before it runs out of speed and is forced to land. By tracking this sudden energy loss using our "slow time" rescaling, we can mathematically bound exactly how far the ship can travel.</p>
+      <p>The ultimate goal is to tie all of these pieces together to obtain a guaranteed boundary map of where these returning vehicles are capable of landing.</p>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <h2 class="documents-title">Research Artifacts</h2>
     <div class="documents">
       <!-- Primary -->
       <a class="volume primary" href="proposal.pdf" target="_blank" rel="noopener">
@@ -221,6 +310,7 @@
 
     <footer>
       <span>Personal research</span>
+      <!-- Note: If you have migrated the repo name from 'hypersonic-reachability' to 'aether', make sure to update this URL! -->
       <a href="https://github.com/ethank5149/hypersonic-reachability" target="_blank" rel="noopener">Repository</a>
     </footer>
   </div>
@@ -230,9 +320,6 @@
     pdfjsLib.GlobalWorkerOptions.workerSrc =
       'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
 
-    // The documents are replaced in place under the same names, and a browser
-    // may keep its copy of a PDF for hours. Ask the server which version is
-    // current, and address that version, so a stale copy is never the one opened.
     async function current(src) {
       try {
         const head = await fetch(src, { method: 'HEAD', cache: 'no-store' });
