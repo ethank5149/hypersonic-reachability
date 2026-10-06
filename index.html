@@ -179,6 +179,45 @@
       object-position: top center;
     }
 
+    .cover.coming-soon {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .cover.coming-soon .spine-edge {
+      background: linear-gradient(to right, var(--warm), transparent);
+      opacity: 0.6;
+    }
+
+    .coming-soon-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      z-index: 2;
+    }
+
+    .coming-soon-label {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 600;
+      color: var(--warm);
+      letter-spacing: -0.01em;
+    }
+
+    .coming-soon-desc {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+    }
+
     .cover .status {
       position: absolute;
       inset: 0;
@@ -197,15 +236,6 @@
     }
 
     @keyframes spin { 100% { transform: rotate(360deg); } }
-
-    .spine-edge {
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 8px;
-      background: linear-gradient(to right, rgba(0,0,0,0.18), transparent);
-      z-index: 2;
-      pointer-events: none;
-    }
 
     .caption {
       margin-top: 1rem;
@@ -317,9 +347,12 @@
     <div class="documents">
       <!-- Primary -->
       <a class="volume primary" href="proposal.pdf" aria-label="Read full PhD research proposal (PDF)" target="_blank" rel="noopener">
-        <div class="cover" data-src="proposal.pdf">
+        <div class="cover coming-soon">
           <div class="spine-edge"></div>
-          <div class="status" aria-hidden="true"><div class="spinner"></div></div>
+          <div class="coming-soon-content">
+            <span class="coming-soon-label">Coming Soon</span>
+            <span class="coming-soon-desc">Updated proposal in preparation</span>
+          </div>
         </div>
         <div class="caption">
           <h2>Proposal <span class="file-meta">PDF (19 pages)</span></h2>
