@@ -337,12 +337,8 @@
       <p>To address this, we dilate the timeline so those split-second atmospheric dips can be isolated. Using this stretched "slow time," we track the energy dissipated during these events. Even if a dip takes almost zero time, we maintain a strict account of the energy lost.</p>
 
       <h3>End Goal</h3>
-      <p>Because the spacecraft has a finite amount of energy, it can only make a limited number of atmospheric dips before it runs out of speed and is forced to land. That budget is what turns an open-ended problem into a finite one: it bounds how many dips there can be and how long each one lasts, and so bounds how far the vehicle can travel.</p>
-
-      <h3>What is proved</h3>
-      <p>The open question was whether the three-part picture is a genuine bound or only a convenient description. It is a bound, and it is now proved &mdash; for a reduced model that keeps the concentration and discards everything else. Everywhere the vehicle can reach is contained in what the skeleton-and-bubble system can reach, widened by a residual whose size is written down in closed form and shrinks as the atmosphere thins. The bound holds uniformly over every steering history and every admissible model of the aerodynamics, which is what separates a certificate from an estimate.</p>
-      <p>The proof is deliberately elementary: an energy identity integrated once, a single change of variable that makes the fast problem independent of the small parameter, and Gronwall's inequality. Occupation measures enter after the limit rather than before it &mdash; once the reduced system is in hand it is a low-dimensional problem with one guard and one jump, which is the form the occupation-measure relaxation was built for. Lions' concentration-compactness principle is expected to be needed for the companion statement at the level of measures, not for the bound itself.</p>
-      <p>Carrying this to a full entry vehicle needs three further results. The critical one is an averaging theorem with explicit constants that stays valid where the vehicle's attitude and structural frequencies cross. That is the work an advisor is wanted for.</p>
+      <p>Because the spacecraft has a finite amount of energy, it can only hit a limited number of atmospheric bumps before it runs out of speed and is forced to land. By tracking this sudden energy loss on a rescaled timeline, we mathematically bound exactly how far the ship can travel. The proposal proves this works on a simplified model, where the argument can be carried through from start to finish.</p>
+      <p>Formally, this is achieved by casting the flight dynamics as a linear problem on occupation measures, and by handling the thin-atmosphere limit so that the boundary-layer events are not lost along the way. The ultimate goal is to tie these pieces together to obtain a guaranteed boundary map of where these returning vehicles can land.</p>
     </section>
 
     <div class="section-divider"></div>
@@ -350,14 +346,14 @@
     <h2 class="documents-title">Research Artifacts</h2>
     <div class="documents">
       <!-- Primary -->
-      <a class="volume primary" href="proposal.pdf" aria-label="Read the mathematical core (PDF)" target="_blank" rel="noopener">
+      <a class="volume primary" href="proposal.pdf" aria-label="Read full PhD research proposal (PDF)" target="_blank" rel="noopener">
         <div class="cover" data-src="proposal.pdf">
           <div class="spine-edge"></div>
           <div class="status" aria-hidden="true"><div class="spinner"></div></div>
         </div>
         <div class="caption">
-          <h2>Mathematical core <span class="file-meta">PDF (13 pages)</span></h2>
-          <p>The model, the hypotheses, one theorem and its complete proof</p>
+          <h2>Proposal <span class="file-meta">PDF (12 pages)</span></h2>
+          <p>Preliminary PhD research proposal</p>
         </div>
       </a>
 
@@ -370,7 +366,7 @@
           </div>
           <div class="caption">
             <h3>Précis <span class="file-meta">PDF (2 pages)</span></h3>
-            <p>Two-page summary, with the theorem stated</p>
+            <p>Two-page summary of the proposal</p>
           </div>
         </a>
       </div>
