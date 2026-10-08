@@ -8,7 +8,7 @@ Currently, computing the exact reachable set for a six-degree-of-freedom hyperso
 
 ## Repository Contents
 
-* **`proposal.pdf`**: The 15-page preliminary PhD research proposal. Details the mathematical framework, the singular limit decomposition, and a reduced theorem proved in full.
+* **`proposal.pdf`**: The 17-page preliminary PhD research proposal. Details the mathematical framework, the singular limit decomposition, and a reduced theorem proved in full.
 * **`precis.pdf`**: A 2-page executive summary (précis) of the proposal, outlining the problem, the approach, the reduced theorem, and remaining open problems.
 * **`index.html`**: The source code for the project's landing page.
 
