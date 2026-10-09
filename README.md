@@ -8,8 +8,8 @@ Currently, computing the exact reachable set for a six-degree-of-freedom hyperso
 
 ## Repository Contents
 
-* **`proposal.pdf`**: The 19-page preliminary PhD research proposal. Details the mathematical framework, the singular limit decomposition, and a reduced theorem proved in full.
-* **`precis.pdf`**: A 2-page executive summary (précis) of the proposal, outlining the problem, the approach, the reduced theorem, and remaining open problems.
+* **`proposal.pdf`**: The 7-page preliminary PhD research proposal. Poses the problem, gives a reduced model in which the phenomenon is present, names the tools the analysis should need, and states the four problems that would have to be established. Nothing in it is claimed as proved.
+* **`precis.pdf`**: A 2-page summary of the proposal: the question, the model, the structure expected, and what remains open.
 * **`index.html`**: The source code for the project's landing page.
 
 ## Methodology Highlights
@@ -19,7 +19,7 @@ Instead of tracking every chaotic detail of a vehicle tumbling through the atmos
 2. **The Bubbles:** Violent, split-second atmospheric dips where the vehicle sheds massive amounts of speed.
 3. **The Residual:** An analytic safety buffer accounting for leftover dynamics and tracking errors.
 
-By dilating the timeline to isolate the "bubbles" (atmospheric dips) in a rescaled "slow time," the framework tracks the energy dissipated during these incredibly fast events. Because the spacecraft has a finite energy budget, tracking this dissipation mathematically bounds how far the ship can travel. The proposal proves this on a reduced model, where the argument can be carried through in full.
+By dilating the timeline to isolate the "bubbles" (atmospheric dips) in a rescaled "slow time," the approach tracks the energy dissipated during these very fast events. Because the spacecraft has a finite energy budget, that dissipation should bound how far it can travel. The proposal sets this out on a reduced model and states what would have to be established to make it a theorem.
 
 Formally, this is achieved by casting the flight dynamics as a linear problem on **occupation measures**, and by handling the thin-atmosphere limit so that the boundary-layer events are not lost along the way.
 
